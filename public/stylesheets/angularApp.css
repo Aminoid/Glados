@@ -1,0 +1,360 @@
+/* Toolbar area */
+
+body {
+  background-color: #fff;
+}
+
+.menu {
+  background-color: transparent;
+  border: none;
+  height: 38px;
+  margin: 16px;
+  width: 36px;
+}
+
+md-sidenav {
+  height: 100%;
+  width: 250px;
+}
+
+
+md-toolbar h3 {
+  margin: auto;
+  font-weight: 500;
+}
+
+/* Sidenav area */
+
+md-list-item > button {
+  width:100%;
+  text-align:left !important;
+  height:70px;;
+}
+
+md-icon.avatar {
+  margin-right: 20px;
+}
+
+  md-list .md-button.selected {
+    color: #03a9f4;
+  }
+
+
+button#main {
+  margin-bottom: 10px;
+}
+
+md-sidenav > md-toolbar {
+  min-height:120px;
+}
+
+md-list-item {
+  overflow: hidden;
+}
+
+/* Primary content area */
+
+
+#content  {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 5px;
+}
+
+#content .md-button.contact {
+  background-color: transparent;
+  border: none;
+  width: 48px;
+  height: 48px;
+  margin: 8px auto 16px 0;
+  position: absolute;
+  top: 10px;
+  right: 40px;
+}
+
+#content md-icon.avatar {
+  margin-top: 10px;
+}
+
+#content .md-button.contact > md-icon {
+  fill:black;
+  width:36px;
+  height:36px;
+}
+
+
+#content .md-button.contact:active > md-icon {
+  background-color: #dadada;
+  border-radius: 75%;
+  padding:4px;
+  transition: all 100ms ease-out 30ms;
+}
+
+
+/* Utils */
+
+/* Typography support coming in 0.8.0 */
+
+.avatar {
+  position:relative;
+  width: 54px;
+  height: 54px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0px;
+  vertical-align: middle;
+
+}
+
+
+md-bottom-sheet  md-icon {
+  margin-right:20px;
+}
+
+/*span.name {
+  font-weight: bold;
+  font-size:1.1em;
+  padding-left:5px;
+} */
+
+md-sidenav .header {
+  background-color: #253841;
+  min-height: 100px;
+}
+
+.main-icon {
+  color: #2B9AC9;
+  font-size: 75px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.main-heading {
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.sub-heading {
+  text-align: center;
+  color: #f3f3f3;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+
+md-sidenav #filters v-pane .side-header {
+  padding: 0 20px;
+}
+
+md-sidenav #filters v-pane v-pane-header {
+  margin-top: 2px;
+}
+
+.pane-icon {
+  font-size: 18px;
+  padding-right: 10px;
+  color: #333;
+  font-weight: 300;
+}
+
+.filter-name {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.pane-content {
+  padding-left: 40px;
+  font-size: 14px ;
+}
+
+.filter-header {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.main-content {
+  background-color: #f3f3f3;
+  top: 0;
+  position: absolute;
+  margin-left: 280px;
+  width: 100%;
+}
+
+.box {
+  position: relative;
+}
+
+.box-item {
+  background-color: #192538;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 300px;
+  margin: 2.25rem 0.75rem 0;
+  overflow: hidden;
+  transition: all 0.25s ease-out;
+}
+
+.box-header {
+  background-color: #e25443;
+  padding: 0.75rem 1.125rem;
+  display: block;
+}
+
+.box-port {
+  color: #fff;
+  float: left;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.box-ip {
+  color: #fff;
+  padding-left: 50%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.box-description {
+  color: rgba(255,255,255,0.7);
+  padding: 0 1.125rem 0 1.125rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.rack-data {
+  background-color: #eee;
+}
+
+.box-details {
+  background: #FFF none repeat scroll 0% 0%;
+  background-clip: border-box;
+  border-radius: 3px;
+  box-sizing: border-box;
+  
+}
+
+.box-element {
+  margin: 0 20px 20px 20px;
+}
+
+.md-card {
+  background: #FFF none repeat scroll 0% 0%;
+}
+
+md-card-title-text {
+  color: #fff;
+}
+
+.md-headline {
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 300;
+}
+
+.widgets {
+  font-size: 15px;
+}
+
+.widget-icons {
+  padding-right: 15px;
+  font-weight: normal;
+}
+
+md-card-title {
+  background-color: #253841;
+}
+
+.card-content {
+  padding-top: 10px;
+}
+
+.entry {
+
+}
+
+.verticalLine {
+  border-right: 1px solid #333;
+}
+
+.entry h6 {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.1;
+  text-align: center
+}
+
+.entry p {
+  font-size: 14px;
+  font-weight: bold;
+  font-color: #555;
+  line-height: 1.4;
+  text-align: center;
+}
+
+md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active, md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active md-icon, md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active md-icon, md-tabs.md-default-theme.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-focused, md-tabs.md-default-theme.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-focused md-icon {
+  color: #253841 !important;
+}
+/* font-family: "Roboto Condensed", sans-serif; */
+
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: #2B9AC9 !important;
+    background-color:#2B9AC9 !important;
+}
+
+
+.scroll-pane {
+  height: 150px;
+  overflow-y: scroll;
+  margin-right: 20px;
+}
+
+.table-icon {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.detail-card-icon {
+  font-size: 36px;
+  color: #253841;
+}
+
+.power-table-icon {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.on-icon {
+  color: #388e3c;
+}
+
+.off-icon {
+  color: #d32f2f;
+}
+
+.dialog-toolbar {
+  background-color: #253841 ;
+}
+
+md-input-container [ng-messages] {opacity: 1 !important;}
+
+md-checkbox.md-checked .md-icon {
+  background-color: #253841;
+  opacity: 0.87;
+}
+
+.md-tab {
+  text-transform: none;
+}
+
+.testbed-card {
+  margin-bottom: 20px;
+} 

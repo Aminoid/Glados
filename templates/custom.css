@@ -1,0 +1,12 @@
+.custom-card {
+	font-size: 18px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.card-title {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0;
+	background-color: #f8f8f8;
+}

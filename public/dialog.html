@@ -1,0 +1,90 @@
+<md-dialog style="min-height:300px; "aria-label="{{ tmpdata.rack }}">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools dialog-toolbar">
+        <h2>{{ tmpdata.rack }}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog()" >
+          <i class="fa fa-close" style="font-size: 20px" aria-label="close"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content layout="column" style="max-width:800px; min-width: 600px; max-height: 851px; " ng-cloak>
+
+      <md-content layout-padding>
+      <form name="form">
+      <div layout-gt-sm="row" class='md-padding'>
+      <md-input-container class="md-block" >
+        <label>Console Port *</label>
+        <input type="number" maxlength="4" required name="port" min="7001" ng-model="tmpdata.port" ng-disabled="!add">
+        <div ng-messages="form.port.$error" >
+          <div ng-message="required">The name has to be less than 4 numbers long.</div>
+          <div ng-message="md-maxlength">The name has to be less than 4 numbers long.</div>
+        </div>
+      </md-input-container>
+      
+      <span flex></span>
+      <md-input-container class="md-block" flex-gt-sm >
+        <label>Device *</label>
+        <md-select ng-model="tmpdata.device" ng-disabled="!(tmpdata.testbed ==
+'')">
+              <md-option ng-repeat="device in devices" value="{{ device }}">
+                {{ device }}
+              </md-option>
+        </md-select>
+      </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>User</label>
+        <md-select ng-model="tmpdata.user" ng-disabled="!(tmpdata.testbed == '')">
+              <md-option value=""> Unassigned </md-option>
+              <md-option ng-repeat="user in users" value="{{ user }}">
+                {{ user }}
+              </md-option>
+        </md-select>
+      </md-input-container>
+      <span flex="5"></span>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Testbed</label>
+        <md-select ng-model="tmpdata.testbed" ng-disabled="!(tmpdata.testbed == '')">
+              <md-option value=""> None </md-option>
+              <md-option ng-repeat="testbed in testbeds" value="{{ testbed._id }}">
+                {{ testbed._id }}
+              </md-option>
+        </md-select>
+      </md-input-container>
+      <span flex="5"></span>
+      <md-input-container class="md-block" >
+        <label>Power</label>
+        <md-select ng-model="tmpdata.power">
+              <md-option value="1">
+                On
+              </md-option>
+              <md-option value="0">
+                Off
+              </md-option>
+        </md-select>
+      </md-input-container>
+       </div>
+      
+     
+    </form>
+     <p style="font-size:.8em; width: 100%; color: #d32f2f; text-align: center;" ng-show="errors">
+        {{ error_message }}
+      </p>
+  </md-content>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="closeDialog()" >
+        Cancel
+      </md-button>
+      <md-button ng-click="answer(tmpdata)" style="margin-right:20px;" >
+        <div ng-show="add">Add Device</div>
+        <div ng-show="!add">Update Device</div>
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

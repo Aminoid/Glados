@@ -1,0 +1,6 @@
+'use strict';
+
+var glados = angular.module('glados', ['ngMaterial', 'ngAnimate', 'ngAria', 'vAccordion'])
+
+       
+       ;

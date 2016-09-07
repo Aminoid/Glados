@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>GLaDOS-Platform Reservation Tool</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,500,700,400italic'>
+    <link rel="stylesheet" href="javascripts/angular-material/angular-material.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/stylesheets/md-data-table.css"/>
+    <link rel="stylesheet" href="/stylesheets/angularApp.css"/>
+    <link rel="stylesheet" href="/stylesheets/v-accordion.css"/>
+    <link rel="stylesheet" href="/stylesheets/mfb.css"/>
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+          display: none !important;
+        }
+    </style>
+
+
+  </head>
+<body ng-app="glados" layout="row" ng-controller="GladosController" ng-cloak >
+
+<!--   Side Bar  -->
+
+  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+      md-component-id="left"
+      aria-label="Show User List"
+      md-is-locked-open="$mdMedia('gt-sm')">
+
+    <md-toolbar class="header md-whiteframe-z1">
+      <div layout="column" layout-align="center center">
+          <div flex><i class="main-icon material-icons">devices_other</i></div>
+          <div flex><h1 class="main-heading">GLaDOS</h1>
+          <h3 class="sub-heading">Platform Reservation Tool</h3></div>
+        </div>
+    </md-toolbar>
+
+    <md-content flex layout="column">
+        <div class="filter-header">
+        <h3>Refine</h3>
+      </div>
+
+      <v-accordion id="filters" class="vAccordion--default" multiple>
+
+  
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-codepen pane-icon"></i> <span class='filter-name'>Devices</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content scroll-pane" >
+          <div layout="column" layout-wrap flex>
+            <div flex ng-repeat="device in devices">
+              <md-checkbox ng-click="toggle(device, filterDevice)">
+                {{ device }}
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-users pane-icon"></i> <span class='filter-name'>Users</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content scroll-pane">
+          <div layout="column" layout-wrap flex>
+            <div flex ng-repeat="user in users">
+              <md-checkbox ng-click="toggle(user, filterUser)">
+                {{ user }}
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-power-off pane-icon"></i> <span class='filter-name'>Power Status</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-click="toggle(1, filterPower)">
+                On
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-click="toggle(0, filterPower)">
+                Off
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+    <!--  <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-cog pane-icon"></i> <span class='filter-name'>Availability</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-click="toggle(1, filterAvail)">
+                Available
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-click="toggle(0, filterAvail)">
+                In Use
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+
+      -->
+
+      </v-accordion>
+      </md-content>
+
+  </md-sidenav>
+
+
+
+  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2 rack-data">
+    <nav mfb-menu position="br" effect="zoomin"
+     active-icon="ion-plus-round" resting-icon="ion-plus-round"
+     toggling-method="click" ng-click="addBox($event)">
+     <md-tooltip md-direction="left">
+          Add new
+        </md-tooltip>
+    </nav>
+    <md-content flex id="content">
+        <md-tabs md-center-tabs="true" md-dynamic-height md-no-ink md-selected="selectedTab" md-primary md-border-bottom md-autoselect>
+      <md-tab ng-repeat="tab in tabs"
+              ng-disabled="tab.disabled"
+              label="{{tab.title}}" ng-click="getData(selectedTab)">
+      </md-tab>
+
+    </md-tabs>
+      
+        <!-- Rack Data table -->
+        <md-content class="md-padding" ng-show="tabs[selectedTab].console != null">
+          <div layout="row" layout-align="center start">
+            <div>
+              <md-card class="detail-card"> 
+                <md-card-header>
+                   <md-card-avatar style="padding-right: 30px">
+                     <i class="fa fa-plug detail-card-icon"></i>
+                  </md-card-avatar>
+                <md-card-header-text>
+                  <span class="md-title">Console</span>
+                  <span class="md-subhead">{{ tabs[selectedTab].console }}</span>
+                </md-card-header-text>
+              </md-card-header>
+            </md-card>
+            </div>
+            <div>
+              <md-card class="detail-card"> 
+                <md-card-header>
+                   <md-card-avatar style="padding-right: 30px">
+                     <i class="fa fa-rocket detail-card-icon"></i>
+                  </md-card-avatar>
+                <md-card-header-text>
+                  <span class="md-title">Gateway</span>
+                  <span class="md-subhead">{{ tabs[selectedTab].gateway }}</span>
+                </md-card-header-text>
+              </md-card-header>
+            </md-card>
+            </div>
+          <div>
+              <md-card class="detail-card"> 
+                <md-card-header>
+                   <md-card-avatar style="padding-right: 30px">
+                     <i class="fa fa-wrench detail-card-icon"></i>
+                  </md-card-avatar>
+                <md-card-header-text>
+                  <span class="md-title">Netmask</span>
+                  <span class="md-subhead">255.255.255.192</span>
+                </md-card-header-text>
+              </md-card-header>
+            </md-card>
+            </div>
+          </div>
+      
+
+       <md-card>
+      
+
+        
+        <md-table-container>
+          <table md-table md-row-select="options.rowSelection" ng-model="selected">
+            <thead md-head md-order="query.order" md-on-reorder="logOrder">
+              <tr md-row>
+                <th md-column md-order-by="port"><span>Port</span></th>
+                <th md-column md-order-by="ip"><span>IP Address</span></th>
+                <th md-column md-order-by="device"><span>Devices</span></th>
+                <th md-column md-order-by="user"><span>Evil User</span></th>
+                <th md-column md-order-by="testbed"><span>Testbed</span></th>
+                <th md-column md-order-by="power"><span>Power</span></th>
+                <th md-column><span>Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="datum in displayData | filter: filter.search | orderBy: query.order">
+                <td md-cell>{{ datum.port }}</td>
+                <td md-cell>
+                  {{ datum.ip }}
+                </td>
+                <td md-cell>{{ datum.device }}</td>
+                <td md-cell><strong>{{ datum.user }}</strong></td>
+                <td md-cell>{{ datum.testbed }}</td>
+                <td md-cell><i class="fa fa-power-off power-table-icon" ng-class="{ 'on-icon' : datum.power, 'off-icon' : !datum.power}"></i></td>
+                <td md-cell>
+                <a style="cursor:pointer" ng-click="updateBox(datum, $event)"><i class="material-icons table-icon" style="padding-right: 5px">mode_edit</i> 
+                <md-tooltip md-direction="bottom">
+                  Edit Box Details
+                </md-tooltip>
+                </a>
+                <a style="cursor:pointer" ng-click="deleteBox(datum, $event)"><i class="material-icons table-icon">highlight_off</i>
+                  <md-tooltip md-direction="bottom">
+                    Delete Box from Rack
+                  </md-tooltip>
+                </a>
+                </td>
+                
+                
+              </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+      </md-card>
+
+    </md-content>
+
+
+    <!-- Testbed data -->
+      <md-content class="md-padding" ng-show="tabs[selectedTab].console == null" >
+        <md-card class="testbed-card" ng-repeat = "testbed in testbeds">
+          <md-toolbar>
+            <div class="md-toolbar-tools dialog-toolbar">
+              <h2>{{ testbed._id }}</h2>
+              <span flex></span>
+              <md-button class="md-icon-button" ng-click="deleteTestbed($event, testbed._id)" >
+                <i class="fa fa-close" style="font-size: 20px" aria-label="close"></i>
+                <md-tooltip md-direction="bottom">
+                  Delete testbed
+                </md-tooltip>
+              </md-button>
+            </div>
+          </md-toolbar>
+          <div layout="row" layout-align="center center">
+            <div>
+              <md-card class="detail-card"> 
+                <md-card-header>
+                   <md-card-avatar style="padding-right: 30px">
+                     <i class="fa fa-user detail-card-icon"></i>
+                  </md-card-avatar>
+                <md-card-header-text>
+                  <span class="md-title">Owner</span>
+                  <span class="md-subhead">{{ testbed.user }}</span>
+                </md-card-header-text>
+              </md-card-header>
+            </md-card>
+            </div>
+          </div>
+      
+      
+
+        
+        <md-table-container>
+          <table md-table md-row-select="options.rowSelection" ng-model="selected">
+            <thead md-head md-order="query.order" md-on-reorder="logOrder">
+              <tr md-row>
+                <th md-column><span>Rack</span></th>
+                <th md-column><span>Port</span></th>
+                <th md-column><span>Device</span></th>
+                <th md-column><span>Power</span></th>
+                <th md-column><span>Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="datum in testbed.devices | filter: filter.search | orderBy: query.order">
+                <td md-cell>{{ datum.rack }}</td>
+                <td md-cell>
+                  {{ datum.port }}
+                </td>
+                <td md-cell>{{ datum.device }}</td>
+                <td md-cell><i class="fa fa-power-off power-table-icon" ng-class="{ 'on-icon' : datum.power, 'off-icon' : !datum.power}"></i></td>
+                <td md-cell>
+                <a style="cursor:pointer" ng-click="deleteFromTestbed($event, testbed._id, datum._id)"><i class="material-icons table-icon">highlight_off</i>
+                <md-tooltip md-direction="bottom">
+                  Delete box from testbed
+                </md-tooltip>
+                </a>
+                </td>
+                
+                
+              </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+      </md-card>
+
+    </md-content>
+
+      
+      </md-content>
+
+  </div>
+
+
+    <script src="/javascripts/angular/angular.js"></script>
+    <script src="/javascripts/angular-animate/angular-animate.js"></script>
+    <script src="/javascripts/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="/javascripts/angular-messages/angular-messages.js"></script>
+    <script type="text/javascript" src="/javascripts/angular-material/angular-material.js"></script>    
+    <script type="text/javascript" src="/javascripts/md-data-table.js"></script>
+    <script type="text/javascript" src="/javascripts/mfb.js"></script>
+    <script type="text/javascript" src="/javascripts/v-accordion.js"></script>
+    <script type="text/javascript" src="/javascripts/angularApp.js"></script>
+    <script type="text/javascript" src="/javascripts/controller.js"></script>
+  </body>
+</html>

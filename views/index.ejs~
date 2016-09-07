@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>GLaDOS-Platform Reservation Tool</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,500,700,400italic'>
+    <link rel="stylesheet" href="javascripts/angular-material/angular-material.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/stylesheets/angularApp.css"/>
+    <link rel="stylesheet" href="/stylesheets/v-accordion.css"/>
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+          display: none !important;
+        }
+    </style>
+
+
+  </head>
+
+ <!-- <body ng-app="glados" ng-controller="GladosController">
+    <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        md-whiteframe="2">
+      <md-toolbar class="header" md-whiteframe="2">
+        <div layout="column" layout-align="center center">
+          <div flex><i class="main-icon material-icons">devices_other</i></div>
+          <div flex><h1 class="main-heading">GLaDOS</h1>
+          <h3 class="sub-heading">Platform Reservation Tool</h3></div>
+        </div>
+      </md-toolbar>
+      <md-content flex layout="column">
+      <md-content>
+      <div class="filter-header">
+        <h3>Refine</h3>
+      </div>
+
+      <v-accordion id="filters" class="vAccordion--default" multiple>
+
+  
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-codepen pane-icon"></i> <span class='filter-name'>Devices</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-users pane-icon"></i> <span class='filter-name'>Minions</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-power-off pane-icon"></i> <span class='filter-name'>Power Status</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-cog pane-icon"></i> <span class='filter-name'>Available</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+
+
+
+      </v-accordion>
+    </md-content>
+    </md-content>
+    </md-sidenav>
+
+<div class="main-content">
+
+  
+  <div class="box">
+    <md-content class="md-padding">
+    <md-tabs md-selected="selectedTab" md-border-bottom md-autoselect>
+      <md-tab ng-repeat="tab in tabs"
+              ng-disabled="tab.disabled"
+              label="{{tab.title}}" ng-click="getData(selectedTab)">
+        
+      </md-tab>
+    </md-tabs>
+  </md-content>
+    <md-content flex>
+      <div layout="row" layout-wrap>
+      <div class="box-item">
+        <div class="box-header">
+          <h4 class="box-port">
+            7240xm</h4>
+            <span class="box-ip">10.16.81.65</span>
+          </div>
+        <p class="box-description"> 10.16.81.65 </p>
+        <p class="box-description"> Used By: Name </p>
+        <p class="box-description"> Part of Testbed </p>
+        <p class="box-description"> Power Status </p>
+      </div>
+
+      <div class="box-item">
+        <p> This is content </p>
+      </div>
+
+      <div class="box-item">
+        <p> This is content </p>
+      </div>
+
+      <div class="box-item">
+        <p> This is content </p>
+      </div>
+
+    </div>
+    </md-content>
+  </div> 
+
+</div>
+
+-->
+<body ng-app="glados" layout="row" ng-controller="GladosController" ng-cloak >
+
+  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+      md-component-id="left"
+      aria-label="Show User List"
+      md-is-locked-open="$mdMedia('gt-sm')">
+
+    <md-toolbar class="header md-whiteframe-z1">
+      <div layout="column" layout-align="center center">
+          <div flex><i class="main-icon material-icons">devices_other</i></div>
+          <div flex><h1 class="main-heading">GLaDOS</h1>
+          <h3 class="sub-heading">Platform Reservation Tool</h3></div>
+        </div>
+    </md-toolbar>
+
+    <md-content flex layout="column">
+        <div class="filter-header">
+        <h3>Refine</h3>
+      </div>
+
+      <v-accordion id="filters" class="vAccordion--default" multiple>
+
+  
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-codepen pane-icon"></i> <span class='filter-name'>Devices</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-users pane-icon"></i> <span class='filter-name'>Minions</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-power-off pane-icon"></i> <span class='filter-name'>Power Status</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+      <v-pane expanded>
+        <div class="side-header">
+        <v-pane-header>
+          <div class="pane-title">
+          <i class="fa fa-cog pane-icon"></i> <span class='filter-name'>Available</span>
+        </div>
+        </v-pane-header>
+        </div>
+
+        <v-pane-content>
+          <div class="pane-content">
+          <div layout="column" layout-wrap flex>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Help
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Mine
+              </md-checkbox>
+            </div>
+            <div flex>
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                Harry
+              </md-checkbox>
+            </div>
+          </div>
+          </div>
+        </v-pane-content>
+      </v-pane>
+
+
+
+
+      </v-accordion>
+      </md-content>
+
+  </md-sidenav>
+
+
+  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2 rack-data">
+
+    <md-content flex id="content">
+        <md-tabs md-center-tabs="true" md-dynamic-height md-no-ink md-selected="selectedTab" md-border-bottom md-autoselect>
+      <md-tab ng-repeat="tab in tabs"
+              ng-disabled="tab.disabled"
+              label="{{tab.title}}" ng-click="getData(selectedTab)">
+        <md-content class="md-padding">
+       <div layout="row" layout-wrap layout-align=" start">
+  <!--      <div flex="30" style="background-color: #fff" class="md-padding md-whiteframe-z1 box-element">
+          
+          <section class="box-details">
+            <p> This is a text</p>
+          </section>
+
+        </div>
+        <div flex="30" style="background-color: #fff" class="md-padding md-whiteframe-z1 box-element">
+          
+          <section class="box-details">
+            <p> This is a text</p>
+          </section>
+
+        </div>
+        <div flex="30" style="background-color: #fff" class="md-padding md-whiteframe-z1 box-element">
+          
+          <section class="box-details">
+            <p> This is a text</p>
+          </section>
+
+        </div>
+        <div flex="30" style="background-color: #fff" class="md-padding md-whiteframe-z1 box-element">
+          
+          <section class="box-details">
+            <p> This is a text</p>
+          </section>
+
+        </div>  -->
+        <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">007</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div layout="row" layout-align="start">
+            <div class="entry">
+              <h6>Device Name</h6>
+              <p>Helper box</p>
+              </div>
+            
+            <div class="entry">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+           </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Helper</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="30">
+        <md-card-title>
+          <md-card-title-text layout="row" layout-align="space-between center">
+            <span class="md-headline">7001</span>
+            <span class="widgets"><i class="fa fa-cog widget-icons"></i><i class="fa fa-close"></i></span>
+
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="start start">
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>Device Name</h6>
+              <p>Extreme-X440-48T-10G</p>
+              </div>
+            </div>
+            
+            <div class="entry">
+            <div class="verticalLine">
+              <h6>IP</h6>
+              <p>10.16.778.7210</p>
+            </div>
+            </div>
+            <div class="entry">
+              <h6>User</h6>
+              <p>Himanshu</p>
+            </div>
+          
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <i class="fa fa-plus" style="padding-right: 20px"></i>
+         <i class="fa fa-power-off"></i></md-button>
+        </md-card-actions>
+      </md-card>
+      
+      </div>
+    </md-content>
+      </md-tab>
+
+    </md-tabs>
+      
+      </md-content>
+
+    
+
+  </div>
+
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="node_modules/angular-material/angular-material.js"></script>
+
+    <script type="text/javascript" src="/javascripts/v-accordion.js"></script>
+    <script type="text/javascript" src="/javascripts/app.js"></script>
+    <script type="text/javascript" src="/javascripts/controller.js"></script>
+
+  </body>
+</html>

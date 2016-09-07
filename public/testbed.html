@@ -1,0 +1,53 @@
+<md-dialog aria-label= "Add a testbed">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools dialog-toolbar">
+        <h2>New Testbed</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog()" >
+          <i class="fa fa-close" style="font-size: 20px" aria-label="close"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content layout="column" style="min-width: 400px"ng-cloak>
+
+      <md-content layout-padding>
+      <form name="form">
+      <div layout-gt-sm="row" >
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Testbed Name *</label>
+        <input type="text" maxlength="30" required name="testbed" min="7001" ng-model="tmpdata.name">
+      </md-input-container>
+      
+      </div>
+      <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>User *</label>
+        <md-select ng-model="tmpdata.user">
+              <md-option value=""> Unassigned </md-option>
+              <md-option ng-repeat="user in users" value="{{ user }}">
+                {{ user }}
+              </md-option>
+        </md-select>
+      </md-input-container>
+      </div>
+      
+     
+    </form>
+     <p style="font-size:.8em; width: 100%; color: #d32f2f; text-align: center;" ng-show="errors">
+        {{ error_message}}
+      </p>
+  </md-content>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="closeDialog()" >
+        Cancel
+      </md-button>
+      <md-button ng-click="answer(tmpdata)" style="margin-right:20px;" >
+        Add Testbed
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+
